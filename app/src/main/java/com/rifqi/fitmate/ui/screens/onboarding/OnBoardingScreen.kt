@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +35,7 @@ fun OnBoardingScreen(
 
     val context = LocalContext.current
 
-    val currentPage = remember { mutableStateOf(0) }
+    val currentPage = remember { mutableIntStateOf(0) }
 
 //    LaunchedEffect(key1 =OnBordingPrefence.isOnboardingCompleted(context)  ) {
 //        navigateToHome()
@@ -66,7 +66,7 @@ fun OnBoardingScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()  ,
-            imageRes = onboardPages[currentPage.value].imageRes
+            imageRes = onboardPages[currentPage.intValue].imageRes
         )
         Spacer(modifier = Modifier.height(64.dp))
 
@@ -74,7 +74,7 @@ fun OnBoardingScreen(
             modifier = Modifier
                 .weight(1f),
 
-            currentPage = onboardPages[currentPage.value]
+            currentPage = onboardPages[currentPage.intValue]
         )
 
         Row(
@@ -95,17 +95,17 @@ fun OnBoardingScreen(
 
                 TabSelector(
                     onboardPages = onboardPages,
-                    currentPage = currentPage.value
+                    currentPage = currentPage.intValue
                 ) { index ->
-                    currentPage.value = index
+                    currentPage.intValue = index
                 }
             }
 
             OnBoardNavButton(
-                currentPage = currentPage.value,
+                currentPage = currentPage.intValue,
                 noOfPages = onboardPages.size,
                 onNextClicked = {
-                    currentPage.value++
+                    currentPage.intValue++
 
                 },
                 onEndClicked = {

@@ -2,14 +2,14 @@ package com.rifqi.fitmate
 
 import android.content.Context
 import androidx.room.Room
-import com.rifqi.fitmate.data.local.dao.SchenduleExerciseDao
+import com.rifqi.fitmate.data.local.dao.ScheduleExerciseDao
 import com.rifqi.fitmate.data.local.database.FitmateDatabase
 import com.rifqi.fitmate.data.model.ApiConstant
 import com.rifqi.fitmate.data.remote.retrofit.ExerciseApiService
 import com.rifqi.fitmate.data.remote.retrofit.MainApi
 import com.rifqi.fitmate.data.remote.retrofit.MlApi
 import com.rifqi.fitmate.data.remote.retrofit.MlApiService
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,14 +27,14 @@ class FitmateModule {
 
     @Singleton
     @Provides
-    fun getRepository(dao: SchenduleExerciseDao): SchenduleExerciseRepository {
-        return SchenduleExerciseRepository(dao)
+    fun getRepository(dao: ScheduleExerciseDao): ScheduleExerciseRepository {
+        return ScheduleExerciseRepository(dao)
     }
 
     @Singleton
     @Provides
-    fun getDao(database: FitmateDatabase): SchenduleExerciseDao {
-        return database.schenduleDao()
+    fun getDao(database: FitmateDatabase): ScheduleExerciseDao {
+        return database.scheduleDao()
     }
 
     @Singleton

@@ -16,7 +16,6 @@ import javax.inject.Inject
 class ExerciseRepository @Inject constructor(private val exerciseApiService: ExerciseApiService){
 
     private val exercises = mutableListOf<Exercise>()
-    private val exercisesByMuscle = mutableListOf<Exercise>()
 
 
     init {

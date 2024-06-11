@@ -1,6 +1,6 @@
 package com.rifqi.fitmate.data.model
 
-data class SchenduleExercise (
+data class ScheduleExercise (
     val id: Long,
     val id_exercise: Long,
     val dateString: String,

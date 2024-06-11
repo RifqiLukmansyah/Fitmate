@@ -78,8 +78,7 @@ fun ReminderSettingScreen(
     val snackState = remember { SnackbarHostState() }
     val snackScope = rememberCoroutineScope()
 
-    Column(
-    ) {
+    Column {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
@@ -249,7 +248,7 @@ fun TimePickerDialog(
     }
 }
 
-@Composable()
+@Composable
 fun PrefenceItem(
     title: String,
     description: String,
@@ -314,7 +313,7 @@ fun PrefenceItem(
 }
 
 
-@Composable()
+@Composable
 fun PrefenceTurnOnOff(
     title: String,
     notificationStatus : Boolean,
@@ -364,7 +363,7 @@ fun PrefenceTurnOnOff(
                     checkedThumbColor = neutral90
                 ),
                 checked = notificationStatus,
-                onCheckedChange = { it ->
+                onCheckedChange = {
                     onChange(it)
                     NotificationStatus.saveNotificationStatus(context, it)
                 }

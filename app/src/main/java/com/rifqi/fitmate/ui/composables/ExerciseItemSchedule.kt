@@ -30,14 +30,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rifqi.fitmate.R
-import com.rifqi.fitmate.data.local.entity.SchenduleExerciseEntity
+import com.rifqi.fitmate.data.local.entity.ScheduleExerciseEntity
 import com.rifqi.fitmate.ui.theme.doneColor
 import com.rifqi.fitmate.ui.theme.lightblue60
 import com.rifqi.fitmate.ui.theme.neutral10
 import com.rifqi.fitmate.ui.theme.neutral80
 
 @Composable
-fun ExerciseItemSchedule(exercise: SchenduleExerciseEntity, navigateToDetailSchedule: (Long) -> Unit) {
+fun ExerciseItemSchedule(exercise: ScheduleExerciseEntity, navigateToDetailSchedule: (Long) -> Unit) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = if (exercise.isFinished) doneColor else neutral80

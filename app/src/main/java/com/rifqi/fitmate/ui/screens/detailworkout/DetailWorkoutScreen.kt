@@ -71,7 +71,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import coil.size.Size
 import com.rifqi.fitmate.R
-import com.rifqi.fitmate.data.local.entity.SchenduleExerciseEntity
+import com.rifqi.fitmate.data.local.entity.ScheduleExerciseEntity
 import com.rifqi.fitmate.data.remote.model.DetailExercise
 import com.rifqi.fitmate.data.remote.model.DetailExerciseRespone
 import com.rifqi.fitmate.data.util.UiState
@@ -112,8 +112,8 @@ fun DetailWorkoutScreen(
                    navigateBack,
                    data.data,
                    navigateToInteractiveArea,
-                   addToSchendule = { schendule ->
-                       detailWorkoutViewModel.addWorkoutSchendule(schendule)
+                   addToSchedule = { schedule ->
+                       detailWorkoutViewModel.addWorkoutSchedule(schedule)
                    },
 
 
@@ -135,7 +135,7 @@ fun DetailContent(
     navigateBack: () -> Unit,
     exercise: DetailExercise,
     navigateToInteractiveArea: (Long) -> Unit,
-    addToSchendule: (SchenduleExerciseEntity) -> String,
+    addToSchedule: (ScheduleExerciseEntity) -> String,
 
     modifier: Modifier = Modifier
 ) {
@@ -178,10 +178,10 @@ fun DetailContent(
                 ) {
                     Box(Modifier.padding(8.dp)) {
                         Icon(
-                            painterResource(id = R.drawable.ic_schendule_inactive),
+                            painterResource(id = R.drawable.ic_schedule_inactive),
                             tint = neutral10,
 
-                            contentDescription = "Schendule to learn this"
+                            contentDescription = "Schedule to learn this"
                         )
                     }
 
@@ -243,7 +243,7 @@ fun DetailContent(
                         onClick = {
 
 
-                            val data = SchenduleExerciseEntity(
+                            val data = ScheduleExerciseEntity(
                                 id_exercise = exercise.id?.toLong() ?: 0,
                                 name_exercise = exercise.name ?: "",
                                 exercise_calori = exercise.calEstimation ?: 0,
@@ -256,7 +256,7 @@ fun DetailContent(
                             )
 
                             CoroutineScope(Dispatchers.Main).launch {
-                                val message = addToSchendule(data)
+                                val message = addToSchedule(data)
 
                                 Toast.makeText(
                                     context,
@@ -269,7 +269,7 @@ fun DetailContent(
                         },
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text("Schendule ")
+                        Text("Schedule ")
                     }
 
                 }

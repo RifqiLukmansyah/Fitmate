@@ -22,7 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.rifqi.fitmate.ui.composables.AppBar
 import com.rifqi.fitmate.ui.composables.BottomBar
-import com.rifqi.fitmate.ui.screens.detailschendule.DetailSchenduleScreen
+import com.rifqi.fitmate.ui.screens.detailschedule.DetailScheduleScreen
 import com.rifqi.fitmate.ui.screens.detailworkout.DetailWorkoutScreen
 import com.rifqi.fitmate.ui.screens.equimentsearch.EquimentSearchScreen
 import com.rifqi.fitmate.ui.screens.explore.ExploreScreen
@@ -33,7 +33,7 @@ import com.rifqi.fitmate.ui.screens.profile.ProfileScreen
 import com.rifqi.fitmate.ui.screens.profile.ProfileViewModel
 import com.rifqi.fitmate.ui.screens.remindersetting.ReminderSettingScreen
 import com.rifqi.fitmate.ui.screens.routelist.ScreenRoute
-import com.rifqi.fitmate.ui.screens.schendule.SchenduleScreen
+import com.rifqi.fitmate.ui.screens.schedule.ScheduleScreen
 import com.rifqi.fitmate.ui.screens.sign_in.GoogleAuthClient
 import com.rifqi.fitmate.ui.util.OnBordingPrefence
 
@@ -51,7 +51,7 @@ fun FitmateApp(
         ScreenRoute.Home.route,
         ScreenRoute.Profile.route,
         ScreenRoute.Explore.route,
-        ScreenRoute.Schendule.route
+        ScreenRoute.Schedule.route
     )
     val context = LocalContext.current
     var searchQuery by remember { mutableStateOf("") }
@@ -149,9 +149,9 @@ fun FitmateApp(
                     navigateToHome = { navController.navigate(ScreenRoute.Home.route) },
                 )
             }
-            composable(ScreenRoute.Schendule.route) {
+            composable(ScreenRoute.Schedule.route) {
 
-                SchenduleScreen(
+                ScheduleScreen(
                     navigateToDetail = { workoutdate ->
                         navController.navigate(ScreenRoute.DetailSchedule.createRoute(workoutdate))
                     },
@@ -166,7 +166,7 @@ fun FitmateApp(
                     navArgument("workoutdate") { type = NavType.StringType }),
             ) {
                 val workoutdate = it.arguments?.getString("workoutdate") ?: ""
-                DetailSchenduleScreen(
+                DetailScheduleScreen(
                     workoutdate = workoutdate,
                     navigateToDetailSchedule = { workoutId ->
                         navController.navigate(ScreenRoute.DetailWorkout.createRoute(workoutId))

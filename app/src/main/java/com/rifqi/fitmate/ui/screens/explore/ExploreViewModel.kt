@@ -1,14 +1,10 @@
 package com.rifqi.fitmate.ui.screens.explore
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rifqi.fitmate.data.remote.model.ExerciseResponse
 import com.rifqi.fitmate.data.util.UiState
 import com.rifqi.fitmate.repository.ExerciseRepository
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +14,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ExploreViewModel @Inject constructor(private val exerciseRepository: ExerciseRepository, private val schenduleExerciseRepository: SchenduleExerciseRepository
+class ExploreViewModel @Inject constructor(
+    private val exerciseRepository: ExerciseRepository
 ) : ViewModel()  {
 
     private val _exercise: MutableStateFlow<UiState<ExerciseResponse>> = MutableStateFlow(
@@ -26,9 +23,6 @@ class ExploreViewModel @Inject constructor(private val exerciseRepository: Exerc
     val exercise: StateFlow<UiState<ExerciseResponse>>
         get() = _exercise
 
-
-    var searchQuery by mutableStateOf("")
-        private set
 
     fun getExercise(query : String) {
 

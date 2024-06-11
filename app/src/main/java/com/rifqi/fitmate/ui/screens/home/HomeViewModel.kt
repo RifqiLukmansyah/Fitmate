@@ -7,7 +7,7 @@ import com.rifqi.fitmate.data.remote.model.ExerciseResponse
 import com.rifqi.fitmate.data.remote.model.MuscleResponse
 import com.rifqi.fitmate.data.util.UiState
 import com.rifqi.fitmate.repository.ExerciseRepository
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val exerciseRepository: ExerciseRepository ,     private val schenduleExerciseRepository: SchenduleExerciseRepository
+class HomeViewModel @Inject constructor(private val exerciseRepository: ExerciseRepository ,     private val scheduleExerciseRepository: ScheduleExerciseRepository
 ) : ViewModel() {
     private val _exercisePopular: MutableStateFlow<UiState<ExerciseResponse>> = MutableStateFlow(UiState.Loading)
     val exercisePopular: StateFlow<UiState<ExerciseResponse>>
@@ -72,13 +72,13 @@ class HomeViewModel @Inject constructor(private val exerciseRepository: Exercise
 
     fun getTodaySchedule() {
         viewModelScope.launch {
-            schenduleExerciseRepository.getTodayExerciseSummary().catch { exception ->
+            scheduleExerciseRepository.getTodayExerciseSummary().catch { exception ->
                 _todaySchedule.value = UiState.Error(exception.message.orEmpty())
-            }.collect { schendule ->
-                if (schendule != null) {
-                    _todaySchedule.value = UiState.Success(schendule)
+            }.collect { schedule ->
+                if (schedule != null) {
+                    _todaySchedule.value = UiState.Success(schedule)
                 } else {
-                    // Handle the case when schendule is null
+                    // Handle the case when schedule is null
                     _todaySchedule.value = UiState.Success(TodayExerciseSummary("N/A", "",0, 0, 0))
                 }
             }

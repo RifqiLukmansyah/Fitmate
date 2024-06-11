@@ -109,7 +109,7 @@ fun ExerciseHorizontalCard(
                 }
 
                 // Informasi di Bawah Card
-                Column() {
+                Column {
                     // Nama Latihan
                     Text(
                         text = exercise.name ?: "",

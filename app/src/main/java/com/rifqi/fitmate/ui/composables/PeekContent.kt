@@ -35,7 +35,7 @@ fun PeekContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        predictionResult.exercise?.data?.let {
+        predictionResult.exercise?.data?.let { it ->
             ExerciseItem(
                 exercise = it,
                 navigateToDetailSchedule = {

@@ -78,7 +78,7 @@ fun SkeletonExerciseHorizontalCard(modifier: Modifier = Modifier) {
                 }
 
                 // Skeleton for Informasi di Bawah Card
-                Column() {
+                Column {
                     // Skeleton for Nama Latihan
                     Box(
                         modifier = Modifier

@@ -5,14 +5,13 @@ import android.text.format.DateUtils
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rifqi.fitmate.data.remote.model.DetailExerciseRespone
 import com.rifqi.fitmate.data.util.UiState
 import com.rifqi.fitmate.repository.ExerciseRepository
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import com.rifqi.fitmate.ui.state.InteractiveUiState
 import com.rifqi.fitmate.ui.util.formatDate
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +25,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InteractiveLearnViewModel  @Inject constructor(    private val repository: ExerciseRepository,
-                                    private val schenduleExerciseRepository: SchenduleExerciseRepository
+                                    private val scheduleExerciseRepository: ScheduleExerciseRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(InteractiveUiState())
@@ -40,10 +39,6 @@ class InteractiveLearnViewModel  @Inject constructor(    private val repository:
     private val currentTime = MutableLiveData<Long>()
     val exercise: StateFlow<UiState<DetailExerciseRespone>>
         get() = _exercise
-
-    private val _canPlaySound: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    val canPlaySound: StateFlow<Boolean>
-        get() = _canPlaySound
 
     var currentTimeString by mutableStateOf("")
 
@@ -62,9 +57,8 @@ class InteractiveLearnViewModel  @Inject constructor(    private val repository:
         get() = _maxSet
 
     private val _eventCountDownFinish = MutableLiveData<Boolean>()
-    val eventCountDownFinish: LiveData<Boolean> = _eventCountDownFinish
 
-    fun initialateCounter(exerciseId : Long? , repetition : Int? , set : Int?, ) {
+    fun initialateCounter(exerciseId : Long? , repetition : Int? , set : Int? ) {
 
         if(exerciseId != null) {
             _uiState.update { currentState ->
@@ -167,7 +161,7 @@ class InteractiveLearnViewModel  @Inject constructor(    private val repository:
         }
     }
 
-    fun stopExercise() {
+    private fun stopExercise() {
         val currentTimeMillis = System.currentTimeMillis()
         val currentDate = formatDate(currentTimeMillis)
         _uiState.update { currentState ->
@@ -218,9 +212,9 @@ class InteractiveLearnViewModel  @Inject constructor(    private val repository:
 
 
     }
-    fun updateExerciseSchedule(workoutId: Long, dateString: String) {
+    private fun updateExerciseSchedule(workoutId: Long, dateString: String) {
         viewModelScope.launch {
-            schenduleExerciseRepository.updateExerciseSchedule(workoutId, dateString)
+            scheduleExerciseRepository.updateExerciseSchedule(workoutId, dateString)
         }
     }
     override fun onCleared() {

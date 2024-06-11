@@ -9,7 +9,7 @@ import com.rifqi.fitmate.data.model.InteractiveExerciseSetting
 
 object FakeData {
 
-    val fakeMuscleData = listOf(
+    private val fakeMuscleData = listOf(
         Muscle(id = 1, "Chest"),
         Muscle(id = 2, "Full Body"),
         Muscle(id = 3, "Legs"),

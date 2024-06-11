@@ -136,6 +136,8 @@ fun HomeScreen(
 
                             val exerciseSummary = uiState.data
 
+
+
                             if (exerciseSummary == TodayExerciseSummary("N/A", "",0, 0, 0)) {
 
                             } else {

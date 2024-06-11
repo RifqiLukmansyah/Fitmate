@@ -11,25 +11,18 @@ import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.PoseDetector
 import com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 class PoseDetectorProcessor {
 
     private val detector: PoseDetector
 
     private val executor = TaskExecutors.MAIN_THREAD
-    private val classificationExecutor: Executor = Executors.newSingleThreadExecutor()
 
     init {
         val options = AccuratePoseDetectorOptions.Builder()
             .setDetectorMode(AccuratePoseDetectorOptions.STREAM_MODE)
             .build()
         detector = PoseDetection.getClient(options)
-    }
-
-    fun stop() {
-        detector.close()
     }
 
     @OptIn(ExperimentalGetImage::class) @SuppressLint("UnsafeExperimentalUsageError")

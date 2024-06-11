@@ -2,11 +2,11 @@ package com.rifqi.fitmate.ui.screens.detailworkout
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rifqi.fitmate.data.local.entity.SchenduleExerciseEntity
+import com.rifqi.fitmate.data.local.entity.ScheduleExerciseEntity
 import com.rifqi.fitmate.data.remote.model.DetailExerciseRespone
 import com.rifqi.fitmate.data.util.UiState
 import com.rifqi.fitmate.repository.ExerciseRepository
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailWorkoutViewModel @Inject constructor(
     private val repository: ExerciseRepository,
-    private val schenduleExerciseRepository: SchenduleExerciseRepository
+    private val scheduleExerciseRepository: ScheduleExerciseRepository
 
 ) : ViewModel() {
 
@@ -40,16 +40,16 @@ class DetailWorkoutViewModel @Inject constructor(
 
 
 
-    fun addWorkoutSchendule(exerciseSchendule : SchenduleExerciseEntity) : String {
+    fun addWorkoutSchedule(exerciseSchedule : ScheduleExerciseEntity) : String {
         var  message = ""
         viewModelScope.launch {
 
-            val isAlreadyExist = schenduleExerciseRepository.isExerciseAlreadyExist(exerciseSchendule.dateString,exerciseSchendule.id_exercise)
+            val isAlreadyExist = scheduleExerciseRepository.isExerciseAlreadyExist(exerciseSchedule.dateString,exerciseSchedule.id_exercise)
             if (isAlreadyExist.isNotEmpty()) {
                 message = "Exercise is already scheduled for this date."
             } else {
                 message= "Exercise scheduled successfully."
-                schenduleExerciseRepository.insertSchendule(exerciseSchendule)
+                scheduleExerciseRepository.insertSchedule(exerciseSchedule)
             }
 
 

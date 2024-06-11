@@ -1,9 +1,9 @@
-package com.rifqi.fitmate.ui.screens.detailschendule
+package com.rifqi.fitmate.ui.screens.detailschedule
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rifqi.fitmate.data.local.entity.SchenduleExerciseEntity
+import com.rifqi.fitmate.data.local.entity.ScheduleExerciseEntity
 import com.rifqi.fitmate.data.util.UiState
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -14,12 +14,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
 class DetailScheduleViewModel @Inject constructor(
-    private val schenduleExerciseRepository: SchenduleExerciseRepository
+    private val schenduleExerciseRepository: ScheduleExerciseRepository
 ) : ViewModel() {
 
-    private val _exerciseState: MutableStateFlow<UiState<List<SchenduleExerciseEntity>>> =
+    private val _exerciseState: MutableStateFlow<UiState<List<ScheduleExerciseEntity>>> =
         MutableStateFlow(UiState.Loading)
-    val exerciseState: StateFlow<UiState<List<SchenduleExerciseEntity>>>
+    val exerciseState: StateFlow<UiState<List<ScheduleExerciseEntity>>>
         get() = _exerciseState  .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
@@ -45,7 +45,7 @@ class DetailScheduleViewModel @Inject constructor(
             schenduleExerciseRepository.updateExerciseSchedule(workoutId, dateString)
         }
     }
-    fun deleteExercise(exerciseSchendule: SchenduleExerciseEntity) {
+    fun deleteExercise(exerciseSchendule: ScheduleExerciseEntity) {
         viewModelScope.launch {
             _exerciseState.value = UiState.Loading
             schenduleExerciseRepository.deleteExercise(exerciseSchendule)

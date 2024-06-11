@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 
 object OnBordingPrefence {
 
-    private  val PREF_NAME = "fitmate_prefs"
-    private  val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
+    private const val PREF_NAME = "fitmate_prefs"
+    private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)

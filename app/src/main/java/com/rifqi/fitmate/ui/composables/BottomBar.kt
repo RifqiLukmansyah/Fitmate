@@ -46,8 +46,8 @@ fun BottomBar(
             ),
             NavigationItem(
                 title = stringResource(R.string.bottom_bar_schedule),
-                icon = if (currentRoute == ScreenRoute.Home.route) R.drawable.ic_schendule_active else R.drawable.ic_schendule_inactive,
-                screen = ScreenRoute.Schendule
+                icon = if (currentRoute == ScreenRoute.Home.route) R.drawable.ic_schedule_active else R.drawable.ic_schedule_inactive,
+                screen = ScreenRoute.Schedule
 
             ),
             NavigationItem(

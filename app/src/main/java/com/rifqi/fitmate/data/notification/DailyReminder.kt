@@ -11,8 +11,8 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.rifqi.fitmate.R
-import com.rifqi.fitmate.data.local.entity.SchenduleExerciseEntity
-import com.rifqi.fitmate.repository.SchenduleExerciseRepository
+import com.rifqi.fitmate.data.local.entity.ScheduleExerciseEntity
+import com.rifqi.fitmate.repository.ScheduleExerciseRepository
 import com.rifqi.fitmate.ui.util.ID_REPEATING
 import com.rifqi.fitmate.ui.util.NOTIFICATION_CHANNEL_ID
 import com.rifqi.fitmate.ui.util.NOTIFICATION_CHANNEL_NAME
@@ -25,10 +25,10 @@ import javax.inject.Inject
 class DailyReminder : BroadcastReceiver() {
 
     @Inject
-    lateinit var schenduleExerciseRepository: SchenduleExerciseRepository
+    lateinit var scheduleExerciseRepository: ScheduleExerciseRepository
     override fun onReceive(context: Context, intent: Intent) {
         executeThread {
-            val schedule = schenduleExerciseRepository.getTodaySchedule()
+            val schedule = scheduleExerciseRepository.getTodaySchedule()
 
             schedule.let {
                 if (it.isNotEmpty()) showNotification(context, it) else Log.d("Schedule" ,"No exercise today")
@@ -72,7 +72,7 @@ class DailyReminder : BroadcastReceiver() {
         )
     }
 
-    private fun showNotification(context: Context, content: List<SchenduleExerciseEntity>) {
+    private fun showNotification(context: Context, content: List<ScheduleExerciseEntity>) {
         val notificationStyle = NotificationCompat.InboxStyle()
         val timeString = context.resources.getString(R.string.notification_message_format)
 
@@ -90,7 +90,7 @@ class DailyReminder : BroadcastReceiver() {
                 NOTIFICATION_CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_HIGH
             ).apply{
-                description = "Course Schendule"
+                description = "Course Schedule"
                 enableVibration(true)
                 vibrationPattern = longArrayOf(100,200,300,400,500)
             }

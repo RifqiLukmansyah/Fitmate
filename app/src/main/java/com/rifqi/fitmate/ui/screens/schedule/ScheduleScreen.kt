@@ -1,4 +1,4 @@
-package com.rifqi.fitmate.ui.screens.schendule
+package com.rifqi.fitmate.ui.screens.schedule
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -48,19 +48,19 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 @Composable
-fun SchenduleScreen(
+fun ScheduleScreen(
     navigateToDetail : (String) -> Unit,
     navigateToScheduleSetting : () -> Unit,
-    schenduleViewModel: SchenduleViewModel = hiltViewModel()
+    scheduleViewModel: ScheduleViewModel = hiltViewModel()
 ) {
 
 
     Box(modifier = Modifier.padding(10.dp)) {
-        schenduleViewModel.schenduleState.collectAsState().value.let { uiState ->
+        scheduleViewModel.scheduleState.collectAsState().value.let { uiState ->
             when (uiState) {
                 is UiState.Loading -> {
                     Text(stringResource(id = R.string.loading_message))
-                    schenduleViewModel.fetchAllSchenduleWorkout()
+                    scheduleViewModel.fetchAllScheduleWorkout()
                 }
                 is UiState.Success -> {
                     if (uiState.data.isEmpty()) {
@@ -88,7 +88,7 @@ fun SchenduleScreen(
 
 
                             }
-                            items(uiState.data, key = { it.id }) { schendule ->
+                            items(uiState.data, key = { it.id }) { schedule ->
                                 Card(
                                     colors = CardDefaults.cardColors(
                                         containerColor = neutral80
@@ -97,13 +97,11 @@ fun SchenduleScreen(
                                         .padding(10.dp)
                                         .fillMaxSize()
                                         .clickable {
-                                            navigateToDetail(schendule.dateString)
+                                            navigateToDetail(schedule.dateString)
                                         },
 
                                     ) {
-                                    Row(
-
-                                    ) {
+                                    Row {
                                         Box(
                                             modifier = Modifier
                                                 .background(
@@ -116,7 +114,7 @@ fun SchenduleScreen(
                                             val date = SimpleDateFormat(
                                                 "yyyy-MM-dd",
                                                 Locale.getDefault()
-                                            ).parse(schendule.dateString)
+                                            ).parse(schedule.dateString)
                                             val dayOfMonth =
                                                 SimpleDateFormat("dd", Locale.getDefault()).format(
                                                     date!!
@@ -156,7 +154,7 @@ fun SchenduleScreen(
 
 
                                             Text(
-                                                schendule.muscleTarget,
+                                                schedule.muscleTarget,
                                                 style = MaterialTheme.typography.bodyMedium.copy(
                                                     color = neutral10,
                                                     fontWeight = FontWeight.Bold,
@@ -182,7 +180,7 @@ fun SchenduleScreen(
                                                     Text(
                                                         text = stringResource(
                                                             R.string.total_exercise_count,
-                                                            schendule.exerciseCount
+                                                            schedule.exerciseCount
                                                         ),
                                                         style = MaterialTheme.typography.bodySmall.copy(
                                                             color = neutral10
@@ -202,7 +200,7 @@ fun SchenduleScreen(
                                                     Text(
                                                         text = stringResource(
                                                             R.string.calori_format,
-                                                            schendule.totalCalories.toInt()
+                                                            schedule.totalCalories.toInt()
                                                         ),
                                                         style = MaterialTheme.typography.bodySmall.copy(
                                                             color = neutral10
