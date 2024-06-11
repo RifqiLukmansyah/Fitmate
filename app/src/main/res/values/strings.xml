@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Fitmate</string>
+    <string name="bottom_bar_home">Home</string>
+    <string name="bottom_bar_explore">Explore</string>
+    <string name="bottom_bar_schedule">Schedule</string>
+    <string name="bottom_bar_profile">Profile</string>
+    <string name="section_favorite_title">Trending Workout Wonders!</string>
+    <string name="section_favorite_subtitle">Sculpt and energize with the latest fitness favorites!</string>
+    <string name="section_discover_title">Discover Your Fitness Playground</string>
+    <string name="section_discover_subtitle">Master basics with essential workouts for all levels</string>
+
+    <string name="empty_exercise_message">Data empty for now</string>
+    <string name="empty_schedule" >Looks like you haven`t mapped out your workout yet, let`s plan it together. Time to create an exciting exercise schedule! 💪✨</string>
+    <string name="error_message">"Something Wrong with server"</string>
+    <string name="loading_message">Loading"</string>
+    <string name="rating_format">%1$d%% Rate</string>
+    <string name="calori_format">%1$d Cal</string>
+    <string name="search_label">Search by gesture or tool</string>
+    <string name="start_interactive_text">Start Interactive Mode</string>
+
+    <string name="continue_with_google">Continue With Google</string>
+    <string name="search_equiment">Search Equiment by image</string>
+
+    <string name="logout">Logout</string>
+    <string name="total_exercise_count">%1$d exercise</string>
+    <string name="total_calori_count">%1$d calori</string>
+    <string name="notification_message_format">(%1$s - %2$s) %3$s</string>
+
+    <string name="web_client_id">250344615901-g79oni8kp6kp831k5955o3gj4p7r2ni6.apps.googleusercontent.com</string>
+
+</resources>

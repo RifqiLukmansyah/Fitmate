@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "250344615901",
+    "project_id": "fitmate-6ca94",
+    "storage_bucket": "fitmate-6ca94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250344615901:android:19e9fbccbba9f8583c1034",
+        "android_client_info": {
+          "package_name": "com.rifqi.fitmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250344615901-nj8alolkdlsrqf8qocuu8m3b07rueemt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rifqi.fitmate",
+            "certificate_hash": "24c79f0cdb28209fcc84818cdce5f86d452a45c7"
+          }
+        },
+        {
+          "client_id": "250344615901-g79oni8kp6kp831k5955o3gj4p7r2ni6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvG9-MIzuHUYLmJk88UuHQCl4O_FFgEoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250344615901-g79oni8kp6kp831k5955o3gj4p7r2ni6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
